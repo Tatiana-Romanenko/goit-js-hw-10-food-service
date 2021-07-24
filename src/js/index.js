@@ -23,12 +23,12 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
-if (localStorage.getItem('theme-switch-toggle') === undefined) {
-    localStorage.setItem('theme-switch-toggle', 'light-theme');
-    
-}
 
 function setTheme() {
+    if (localStorage.getItem('theme-switch-toggle') === null) {
+        localStorage.setItem('theme-switch-toggle', 'dark-theme');
+        changeBodyColor.classList.add('dark-theme');
+    }
     changeBodyColor.classList.remove('dark-theme');
     changeBodyColor.classList.remove('light-theme');
     changeBodyColor.classList.add(localStorage.getItem('theme-switch-toggle'));
@@ -46,7 +46,4 @@ themeToggleBtn.addEventListener('change', function () {
 });
 
  setTheme();
-
-
-
 
